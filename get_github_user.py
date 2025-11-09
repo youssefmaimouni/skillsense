@@ -76,20 +76,8 @@ def collect_github_profile(username):
         "email": user_data.get("email") or "",
         "company": user_data.get("company") or "",
         "website": user_data.get("blog") or "",
-        "avatar_url": user_data.get("avatar_url"),
-        "public_repos_count": user_data.get("public_repos", 0),
-        "followers": user_data.get("followers", 0),
-        "following": user_data.get("following", 0),
         "repos": repos_list,  # <-- combined field
-        "recent_commit_messages": recent_commits[:10],
         "user_named_repo_readme": readme_content,
-        "profile_url": user_data.get("html_url"),
-        "created_at": user_data.get("created_at"),
-        "updated_at": user_data.get("updated_at"),
-        "raw_data": {
-            "user": user_data,
-            "repos_count": len(repos)
-        }
     }
 
 def collect_profile_from_github_url(url):

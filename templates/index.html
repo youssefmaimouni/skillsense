@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile Collector API - User Tests</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 40px;
+      background: #f6f6f6;
+    }
+    h2 {
+      color: #333;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+      width: 250px;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background: #222;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Profile Collector API - Test Interface</h1>
+
+  <div class="section">
+    <h2>1️⃣ Signup</h2>
+    <input id="signup_name" placeholder="Name" /><br />
+    <input id="signup_email" placeholder="Email" /><br />
+    <input id="signup_password" type="password" placeholder="Password" /><br />
+    <button onclick="signup()">Signup</button>
+    <pre id="signup_result"></pre>
+  </div>
+
+  <div class="section">
+    <h2>2️⃣ Login</h2>
+    <input id="login_email" placeholder="Email" /><br />
+    <input id="login_password" type="password" placeholder="Password" /><br />
+    <button onclick="login()">Login</button>
+    <pre id="login_result"></pre>
+  </div>
+
+  <div class="section">
+    <h2>3️⃣ Update Profile</h2>
+    <input id="update_user_id" placeholder="User ID" /><br />
+    <input id="update_name" placeholder="New Name" /><br />
+    <input id="update_email" placeholder="New Email" /><br />
+    <button onclick="updateProfile()">Update</button>
+    <pre id="update_result"></pre>
+  </div>
+
+  <script>
+    const BASE_URL = "http://127.0.0.1:5000";
+
+    async function signup() {
+      const data = {
+        name: document.getElementById("signup_name").value,
+        email: document.getElementById("signup_email").value,
+        password: document.getElementById("signup_password").value,
+      };
+      const res = await fetch(`${BASE_URL}/signup`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data),
+      });
+      document.getElementById("signup_result").textContent = JSON.stringify(await res.json(), null, 2);
+    }
+
+    async function login() {
+      const data = {
+        email: document.getElementById("login_email").value,
+        password: document.getElementById("login_password").value,
+      };
+      const res = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data),
+      });
+      document.getElementById("login_result").textContent = JSON.stringify(await res.json(), null, 2);
+    }
+
+    async function updateProfile() {
+      const data = {
+        user_id: document.getElementById("update_user_id").value,
+        name: document.getElementById("update_name").value,
+        email: document.getElementById("update_email").value,
+      };
+      const res = await fetch(`${BASE_URL}/update_profile`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data),
+      });
+      document.getElementById("update_result").textContent = JSON.stringify(await res.json(), null, 2);
+    }
+  </script>
+</body>
+</html>

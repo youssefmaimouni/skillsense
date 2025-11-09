@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Collector API - Profile Tests</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 40px; }
+    h1 { color: #333; }
+    .section {
+      background: white; padding: 20px; border-radius: 10px;
+      margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 400px; padding: 8px; margin-right: 10px;
+    }
+    button {
+      padding: 8px 12px; background: #28a745; color: white;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    button:hover { background: #218838; }
+    pre {
+      background: #222; color: #0f0; padding: 10px;
+      border-radius: 6px; overflow-x: auto;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌐 Test GitHub, LinkedIn & CV Endpoints</h1>
+
+  <!-- GitHub -->
+  <div class="section">
+    <h2>GitHub Profile</h2>
+    <input id="github_url" placeholder="Enter GitHub profile URL" />
+    <button onclick="fetchGithub()">Fetch</button>
+    <pre id="github_result"></pre>
+  </div>
+
+  <!-- LinkedIn -->
+  <div class="section">
+    <h2>LinkedIn Profile</h2>
+    <input id="linkedin_url" placeholder="Enter LinkedIn profile URL" />
+    <button onclick="fetchLinkedin()">Fetch</button>
+    <pre id="linkedin_result"></pre>
+  </div>
+
+  <!-- CV Upload -->
+  <div class="section">
+    <h2>CV (Resume) Profile</h2>
+    <input type="file" id="cv_file" accept=".pdf,.doc,.docx,.txt" />
+    <button onclick="uploadCV()">Upload & Analyze</button>
+    <pre id="cv_result"></pre>
+  </div>
+
+  <script>
+    const BASE_URL = "http://127.0.0.1:5000";
+
+    async function fetchGithub() {
+      const url = document.getElementById("github_url").value;
+      const resultEl = document.getElementById("github_result");
+      resultEl.textContent = "Loading..."; // show loading
+      try {
+        const res = await fetch(`${BASE_URL}/github`, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ url }),
+        });
+        resultEl.textContent = JSON.stringify(await res.json(), null, 2);
+      } catch (err) {
+        resultEl.textContent = "Error: " + err;
+      }
+    }
+
+    async function fetchLinkedin() {
+      const url = document.getElementById("linkedin_url").value;
+      const resultEl = document.getElementById("linkedin_result");
+      resultEl.textContent = "Loading..."; // show loading
+      try {
+        const res = await fetch(`${BASE_URL}/linkedin`, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ url }),
+        });
+        resultEl.textContent = JSON.stringify(await res.json(), null, 2);
+      } catch (err) {
+        resultEl.textContent = "Error: " + err;
+      }
+    }
+
+    async function uploadCV() {
+      const fileInput = document.getElementById("cv_file");
+      const file = fileInput.files[0];
+      const resultEl = document.getElementById("cv_result");
+
+      if (!file) {
+        alert("Please select a CV file first!");
+        return;
+      }
+
+      resultEl.textContent = "Loading..."; // show loading
+
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const res = await fetch(`${BASE_URL}/cv`, {
+          method: "POST",
+          body: formData,
+        });
+
+        resultEl.textContent = JSON.stringify(await res.json(), null, 2);
+      } catch (err) {
+        resultEl.textContent = "Error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -38,8 +38,14 @@ def collect_github_profile(username):
     repos_resp = requests.get(repos_url, headers=HEADERS, params={"per_page": 100})
     repos = repos_resp.json() if repos_resp.status_code == 200 else []
 
-    repo_names = [r.get("name") for r in repos if r.get("name")]
-    repo_descriptions = [r.get("description") for r in repos if r.get("description")]
+    # Combine repo name and description into a single list of dicts
+    repos_list = [
+        {
+            "repo_name": r.get("name"),
+            "repo_description": r.get("description") or ""
+        }
+        for r in repos if r.get("name")
+    ]
 
     recent_commits = []
     count = 0
@@ -74,8 +80,7 @@ def collect_github_profile(username):
         "public_repos_count": user_data.get("public_repos", 0),
         "followers": user_data.get("followers", 0),
         "following": user_data.get("following", 0),
-        "repo_names": repo_names,
-        "repo_descriptions": [d for d in repo_descriptions if d],
+        "repos": repos_list,  # <-- combined field
         "recent_commit_messages": recent_commits[:10],
         "user_named_repo_readme": readme_content,
         "profile_url": user_data.get("html_url"),

@@ -73,41 +73,127 @@
         "authentification api",
         "model + data base"
     ],
-    "repo_descriptions": [
-        "Plateforme de gestion de stok des marchandises",
-        "Config files for my GitHub profile."
-    ],
-    "repo_names": [
-        "AquaFlow",
-        "autorevise-ai-campus",
-        "fsac-pve",
-        "gestion",
-        "gestion-stork",
-        "GoogleCloudProject",
-        "hackathone",
-        "houses_cars_prices_prediction",
-        "hraifi_back",
-        "hrayfi-artisan-gallery",
-        "hrayfIA",
-        "interfaceMobile",
-        "jlm-ensakh.github.io",
-        "MonPremierProjetGit",
-        "PFA_models",
-        "pfefront",
-        "profilesmatching",
-        "project-java-tf-idf",
-        "project-SD",
-        "project-svd",
-        "Projet_Outilles",
-        "projet_SD_interface",
-        "SCINC",
-        "SCINC_app",
-        "site",
-        "site_2",
-        "skillsense",
-        "store-native-js",
-        "twitter-scrapper",
-        "youssefmaimouni"
+    "repos": [
+        {
+            "repo_description": "",
+            "repo_name": "AquaFlow"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "autorevise-ai-campus"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "fsac-pve"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "gestion"
+        },
+        {
+            "repo_description": "Plateforme de gestion de stok des marchandises",
+            "repo_name": "gestion-stork"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "GoogleCloudProject"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "hackathone"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "houses_cars_prices_prediction"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "hraifi_back"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "hrayfi-artisan-gallery"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "hrayfIA"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "interfaceMobile"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "jlm-ensakh.github.io"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "MonPremierProjetGit"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "PFA_models"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "pfefront"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "profilesmatching"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "project-java-tf-idf"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "project-SD"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "project-svd"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "Projet_Outilles"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "projet_SD_interface"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "SCINC"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "SCINC_app"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "site"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "site_2"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "skillsense"
+        },
+        {
+            "repo_description": "Config files for my GitHub profile.",
+            "repo_name": "store-native-js"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "twitter-scrapper"
+        },
+        {
+            "repo_description": "",
+            "repo_name": "youssefmaimouni"
+        }
     ],
     "updated_at": "2025-11-03T14:38:20Z",
     "user_id": "135459547",
